@@ -173,6 +173,9 @@
     \begin{frame}{Parallel Springs}
         We have learnt in class that the formula for the resultant spring constant \(k\) of springs with spring constants \(k_1, k_2, \ldots, k_n\) and \alert{same initial lengths} \(l\) being in parallel satisfies that\pause
         \[k = \sum_{i = 1}^{n} k_i.\]
+
+        \pause
+        \textit{In some time, we will soon see that the red text is completely useless.}
     \end{frame}
 
     \begin{frame}{Parallel Springs}
@@ -194,7 +197,77 @@
         \]
     \end{frame}
 
-    
+    \begin{frame}{Not same initial lengths?}
+        Naturally, questions will arise to us: if multiple springs are in parallel, with one end connected to a wall, and the other end connected to a, let's say, thin plastic board, and we investigate this resultant spring setup:\pause
+        \begin{enumerate}
+            \item what will happen if they have \alert{different initial lengths}?\pause
+            \item what will happen if they not only have different initial lengths, but also different spring constants?
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Different \(l\)}
+        \textit{Question.} Say if there are springs with spring constant \(k_1, k_2, \ldots, k_n\) and with different initial lengths, \(l_1, l_2, \ldots, l_n\) connected together with the previously said setup,\pause
+        \begin{enumerate}
+            \item what is the new initial length of the resultant spring \(l\),\pause
+            \item what is the new spring constant?
+        \end{enumerate}\pause
+
+        \textit{You may consider that the springs are ideally attached at the same point between the wall and the plastic board, so no rotation has to be taken into account.}
+    \end{frame}
+
+    \begin{frame}{Solution}
+        \textit{Solution.} Say that the new spring has a new initial length \(l\). Then the extension in each spring satisfies that
+        \[
+            x_i = l - l_i,
+        \]
+        and therefore the force provided by each spring satisfies that
+        \[
+            F_i = k_i x_i = k_i (l - l_i).
+        \]
+        \pause
+        Since it is the new initial length, \(l\) must satisfy that
+        \[
+            F = \sum_{i = 1}^{n} F_i = 0,
+        \]
+        which means that
+        \[
+            \sum_{i = 1}^{n} k_i l = \sum_{i = 1}^{n} k_i l_i,
+        \]
+        and that \(l\) is the weighted arithmetic mean of the \(l_i\)s.
+    \end{frame}
+
+    \begin{frame}{Solution}
+        Now consider the new spring constant. If the spring is extended by a new \(\Delta x\), then the extra force provided by each spring will be equal to
+        \[
+            \Delta F_i = k_i \Delta x,
+        \]
+        which results in a resultant change in force of
+        \[
+            \Delta F = \sum_{i = 1}^{n} \Delta F_i = \sum_{i = 1}^{n} k_i \Delta x = \Delta x \sum_{i = 1}^{n} k_i
+        \]
+        giving a new spring constant of
+        \[
+            k = \sum_{i = 1}^{n} k_i.
+        \]
+        \pause
+        This gives the same result of the original formula where they have the same initial lengths.
+    \end{frame}
+
+    \begin{frame}{Some Comments}
+        Why does this give the same result as the previous derivation?\pause
+
+        I think one of the most important reasons is that \(F \propto x\), i.e., the linearity of the Hooke's law gives us a lot of nice properties, including the fact that any resultant combination is in fact obeying the Hooke's law.
+        \pause
+        
+        This straight line property also gives a very nice property of
+        \[
+            k = \frac{F}{x} = \frac{\Delta F}{\Delta x},
+        \]
+        which is the key part of our new derivation.
+        \pause
+
+        A nice example might be the fact that non-ohmic resistors typically do not observe the series circuit law of resistances (non-linearality).
+    \end{frame}
 
     \section{BPhO Question}
 
