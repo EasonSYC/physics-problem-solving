@@ -1,0 +1,45 @@
+% https://tex.stackexchange.com/questions/568105/illustrating-newtons-path-of-fastest-descent
+
+\documentclass{standalone}
+\usepackage{luamplib}
+\begin{document}
+\mplibtextextlabel{enable}
+\begin{mplibcode}
+    beginfig(1);
+    pair A, B;
+    A = (-1,1) scaled 300;
+    B = origin;
+
+    draw A -- (xpart A, ypart B) -- B withpen pencircle scaled 1/4 withcolor 3/4 white;
+
+    path p[];
+    p1 = A -- B;  % line
+
+    % circular
+    z0 = (xpart B, ypart A);
+    p2 = quartercircle rotated 180 scaled 2 abs (z0-B) shifted z0;
+
+    % parabola f = x^2, f' = 2x
+    p3 = A{1,-2} ... (xpart 1/2[A, B], ypart 3/4[A, B]){1,-1} ... B {1, 0};
+
+    % sixth degree f = x^6, f' = 6x^5 
+    p4 = A{1,-6} ... (xpart 1/2[A, B], ypart 63/64[A, B]){1, -6/32} ... B {1, 0};
+
+    r = 172; % <- a magic number...
+    p5 = (origin for t=5 step 5 until 180: -- (0,r) rotated t shifted ((t/57.29578,-1) scaled r) endfor)
+    shifted A cutafter ((up--down) scaled 10 shifted B);
+
+
+    drawoptions(withcolor 2/3 red);         draw p1; dotlabel.urt("Line", point 1/4 of p1);
+    drawoptions(withcolor 1/2 green);       draw p2; dotlabel.urt("Circle", point 1 of p2);
+    drawoptions(withcolor 1/4[red, green]); draw p3; dotlabel.urt("Parabola", point 1/2 of p3);
+    drawoptions(withcolor 3/4[red, green]); draw p4; dotlabel.llft("Sixth degree", point 3/4 of p4);
+    drawoptions(withcolor 1/2 blue);        draw p5; dotlabel.urt("Cycloid", point 22 of p5);
+
+    drawoptions();
+    dotlabel.ulft("$A$" , A);
+    dotlabel.urt("$B$", B);
+
+    endfig;
+\end{mplibcode}
+\end{document}
