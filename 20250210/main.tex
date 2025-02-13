@@ -1,0 +1,394 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+\graphicspath{{img/}}
+
+\title{Entropy -- From Physics, and Beyond}
+\author{Eason Shao}
+\institute[St Paul's School]{Physics Problem Solving Society\\St Paul's School}
+\date{10.02.2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{What is Entropy?}
+
+\frame{
+    \frametitle{What is Entropy?}\pause
+
+    Questions we aim to answer today \dots\pause
+
+    \begin{itemize}
+        \item Does entropy belong to a state (like potential energy), or a process (like heat transferred)?\pause
+        \item What is the formulae(s) for entropy?\pause
+        \item What properties do entropy have?\pause
+        \item How can we intuitively understand entropy?\pause
+        \item What is the unit for entropy?
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Famous Formulae about Entropy}\pause
+
+    These are only a few that I could think of:\pause
+
+    \begin{itemize}
+        \item 
+        \(
+            \displaystyle
+            S = k_{\text{B}} \ln \Omega,
+        \)\pause
+        \item
+        \(
+            \displaystyle
+            S = - \sum p_i \log_2 p_i
+        \)\pause
+        \item
+        \(
+            \displaystyle
+            \mathsf{d}S = \frac{\delta Q_{\text{rev}}}{T},
+        \)\pause
+        \item
+        \(
+            \displaystyle
+            \Delta G = \Delta H - T \Delta S,
+        \)
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Famous Quotes about Entropy}\pause
+
+    \begin{quote}
+        \dots We may express in the following manner the fundamental laws of the universe which correspond to the two fundamental theorems of the mechanical theory of heat: the energy of the universe is constant; the entropy of the universe tends to a maximum.
+
+        \hfill --- Rudolf Clausius (1865), Mechanical Theory of Heat
+    \end{quote}\pause
+
+    \vspace{5mm}
+
+    \begin{quote}
+        Nature never undertakes any change unless her interests are served by an increase in entropy.
+
+        \hfill --- Max Planck (1903), Article
+    \end{quote}\pause
+
+    \vspace{5mm}
+
+    \begin{quote}
+        The increase of disorder or entropy is what distinguishes the past from the future, giving a direction to time.
+
+        \hfill --- Stephen Hawking (1988), A Brief History of Time
+    \end{quote}
+}
+
+\frame{
+    \frametitle{Entropy as a mesurement of disorder}
+
+    To describe 'order' quantitively \dots\pause
+
+    \begin{definition}[Macrostate and Microstate]
+        \begin{itemize}
+            \item A \textbf{macroscopic description} of a system is given by its observable quantities. This defines the \textbf{macrostate} of the system.\pause
+            \item A \textbf{microscopic description} of a system is given by the states of each individual particle that makes up the system. This defines the \textbf{microstate} of the system.\pause
+            \item The \textbf{multiplicity} of a \textbf{macrostate}, \(\Omega\), is the number of microstates corresponding to the given macrostate.
+        \end{itemize}
+    \end{definition}
+}
+
+\frame{
+    \frametitle{Macrostate and Microstate}
+
+    \begin{example}[Balloon containing Helium]
+        \begin{itemize}\pause
+            \item The \textbf{macrostate} of such balloon can be defined by quantities such as the \textbf{pressure} \(P\), \textbf{volume} \(V\), and the \textbf{temperature} \(T\).\pause
+            \item The \textbf{microstate} of such balloon can be defined by the \textbf{position} \(\vec{x}_i\) and \textbf{velocity} \(\vec{v}_i\) of the individual molecules:
+            \[
+                \{(\vec{x}_1, \vec{v}_1), (\vec{x}_2, \vec{v}_2), \ldots\}.\pause
+            \]
+            \item For each \((P, V, T)\), there can be multiple different microstates corresponding to such macrostate.\pause
+        \end{itemize}
+    \end{example}
+
+    \begin{block}{Remark}
+        For a gas which is not mono-molecular, there is an extra component in each microstate, which is the orientation of the molecule.
+    \end{block}
+}
+
+\frame{
+    \frametitle{Boltzmann's Entropy Formula}
+
+    Given that all microstates are equally likely \dots\pause
+
+    \begin{definition}[Boltzmann's Entropy Formula]
+        \[
+            S = k_{\text{B}} \ln \Omega,
+        \]
+        where \(k_\text{B}\) is the Boltzmann Constant, which is approximiately \(1.380649 \times 10^{-23} \unit{\joule\per\kelvin}\).
+    \end{definition}\pause
+
+    \begin{quote}
+        Entropy is a property of a state.
+    \end{quote}\pause
+
+    This means that if we combine two system \(A\) and \(B\) together as one system, we will have
+    \begin{align*}
+        \onslide<+->{S_{A + B} &= k_{\text{B}} \ln \Omega_{A + B}\\}
+        \onslide<+->{&= k_{\text{B}} \ln (\Omega_A \Omega_B)\\}
+        \onslide<+->{&= k_{\text{B}} \ln \Omega_A + k_{\text{B}} \ln \Omega_B\\}
+        \onslide<+->{&= S_A + S_B,}
+    \end{align*}
+    \onslide<+->{and entropy is additive!}
+}
+
+\frame{
+    \frametitle{Boltzmann's Entropy Formula -- Example}
+
+    \begin{example}
+        Consider a box where it is split into two halves, and I have four different balls. I use the pair \((x, y)\) where \(x + y = 4\) to represent a macrostate observed, when there are \(x\) balls on the left half and \(y\) balls on the right half.\pause
+        
+        \begin{itemize}
+            \item What is the multiplicity of the macrostate \((0, 4)\)?\pause\ \textbf{1}.\pause
+            \item What about \((1, 3)\) and \((2, 2)\)?\pause\ \textbf{4}, \textbf{6}.\pause
+            \item How many ways are there to arrange in total?\pause\ \textbf{16}.\pause
+        \end{itemize}
+
+        The macrostate \((2, 2)\) has the highest entropy, since it has the hightest multiplicity.\pause
+
+        It is the most disordered, and we can gain least information on the arrangement of the spheres give a macrostate.\pause
+    \end{example}
+
+    \begin{quote}
+        Entropy is a measure of disorder.
+    \end{quote}
+}
+
+\frame{
+    \frametitle{Second Law of Thermodynamics}\pause
+
+    \begin{theorem}[Second Law of Thermodynamics]
+        The entropy of an isolated system alays increases.
+    \end{theorem}\pause
+
+    It gives a necessary criteria for a \textbf{spontaneous process}.\pause
+
+    \begin{example}
+        Consider a container with 2 compartments containing 2 different gases, hydrogen and oxygen. We denote this as macrostate \(A\).\pause
+    
+        After the divider of the 2 compartments is removed, the gases will mix freely. We now denote this as macrostate \(B\).\pause
+    
+        There are many more ways that the gas molecules can spread themselves over the container.\pause
+    
+        Therefore, \(\Omega_B > \Omega A\), and \(S_B > S_A\), entropy increases.
+    \end{example}
+}
+
+\frame{
+    \frametitle{Third Law of Thermodynamics}\pause
+
+    \begin{theorem}[Third Law of Thermodynamics]
+        For all perfect crystalline substances:
+        \[
+        \lim_{T \to 0 \unit{\kelvin}} S = 0.
+        \]
+    \end{theorem}
+    \pause
+    \begin{proof}
+        At absolute zero, the only possible configuration for a crystal is for all atoms to stay in place and have no vibration. Therefore, \(\Omega = 1\), and \(S = 0\).
+    \end{proof}
+}
+
+\frame{
+    \frametitle{Example - Third Law of Thermodynamics}\pause
+    \begin{problem}
+        Suppose a system consisting of a crystal lattice with \(N\) identical atoms at \(T = 0\unit{\kelvin}\). An incoming photon is absorbed by the lattice. What is the new entropy, \(S\) of the system?
+    \end{problem}
+    \pause
+
+    \begin{solution}
+        Since all atoms are identical, there are \(N\) possible microstates after absorption (since there is a unique atom that interacts and absorbs the photon), determined by the only excited atom.\pause
+        
+        This means the new multiplicity of the system is \(\Omega = N\), and therefore the new entropy is simply
+        \[
+        S = k_{\text{B}} \ln \Omega.
+        \]
+    \end{solution}
+}
+
+\frame{
+    \frametitle{Why are all microstates equally probable?}\pause
+
+    \textbf{They are not.} (But Boltzmann is not wrong either.)\pause
+
+    In short -- Boltzmann Entropy only applies to \textbf{isolated systems in global thermodynamical equilibrium}.\pause
+
+    In most systems that we want to study, system microstates are not equal probable, since we would like to study \textbf{the interaction between the system and the surroundings}, but the system + surrounding microstates are still equally probable like before. (We can show that the system microstates follow a certain distribution.)\pause
+
+    \begin{definition}[Gibbs Entropy]
+        \[
+            S_{\text G} = - k_\text{B} \sum p_i \ln p_i,
+        \]
+        where \(p_i\) is the probability of obtaining a certain microstate.
+    \end{definition}
+}
+
+\frame{
+    \frametitle{Gibbs Entropy}
+
+    \begin{problem}
+        Show that when all \(p_i\)s are equal, the definition of Gibbs Entropy reduces to the Boltzmann Entropy.
+        \[
+            S_{\text G} = - k_\text{B} \sum p_i \ln p_i.
+        \]
+    \end{problem}
+    \pause
+    
+    \begin{solution}
+        When all \(p_i\)s are equal, we have \(\sum p_i\) = 1, therefore \(p_i = \frac{1}{\Omega}\).
+
+        Plugging this in gives us
+        \begin{align*}
+            S_{\text G} &= - k_\text{B} \sum p_i \ln p_i\\
+            &= - k_\text{B} \cdot \Omega \cdot \left(\frac{1}{\Omega} \cdot \ln \frac{1}{\Omega}\right)\\
+            &= - k_\text{B} (- \ln \Omega)\\
+            &= k_\text{B} \ln \Omega.
+        \end{align*}
+    \end{solution}
+}
+
+\frame{
+    \frametitle{Information Theory}
+
+    We mentioned that \textit{most disordered state gives us the least information} -- so the higher the entropy, the less the information gained.\pause
+    
+    Imagine rolling two dice and summing the resuts. Mathematically, consider independent random variables \(X_1, X_2 \sim U(6)\), and let \(Y = X_1 + X_2\).\pause
+
+    The probability mass function (p.m.f) of \(Y\) is as follows:
+
+    \begin{center}
+        \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \(y\) & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+            \hline
+            \(36 \cdot \mathbb{P}(Y = y)\) & 1 & 2 & 3 & 4 & 5 & 6 & 5 & 4 & 3 & 2 & 1\\
+            \hline
+        \end{tabular}
+    \end{center}\pause
+
+    The less likely an event, \pause the more \textbf{surprisal} it gives you, \pause \textbf{the more information you gain}.
+}
+
+\frame{
+    \frametitle{Shannon Entropy}
+
+    \begin{definition}[Surprisal of an Event]\pause
+        For an event \(X = i\) for some \(i\), its surprisal is denoted as \(\gamma(i)\):
+        \[
+            \gamma(i) = -\log_2 p_i.
+        \]
+    \end{definition}\pause
+
+    \begin{definition}[Shannon Entropy]\pause
+        For a random variable \(X\), its Shannon entropy \(H(X)\) is defined as
+        \[
+            H(X) = \mathbb{E}[\gamma(i)] = \sum p_i \gamma(i) = - \sum p_i \log_2 p_i.
+        \]
+    \end{definition}\pause
+
+    Compare this to Gibbs Entropy: \(S = - k_{\text{B}} \sum p_i \ln p_i\).
+}
+
+\frame{
+    \frametitle{Significance of Shannon Entropy}
+
+    \begin{problem}[Shannon's First Question]\pause
+        What is the limit to which information can be \textbf{reliably compressed}?
+    \end{problem}\pause
+
+    \begin{theorem}[Shannon's Source Coding Theorem]
+        The limit of reliable compression of \(N\) i.i.d. random variables \(X_1, X_2, \ldots, X_n \sim X\) each with entropy \(H(X)\) is \(N \cdot H(X)\) bits.
+    \end{theorem}
+}
+
+\frame{
+    \frametitle{Data Compression -- Example}
+
+    \begin{problem}
+        There are four horses, \(A\), \(B\), \(C\) and \(D\) in a particular series of races for horses. The probabilities of individual horses winning, respectively, is as in the table below.
+
+        \begin{center}
+            \begin{tabular}{|c||c|c|c|c|}
+                \hline
+                Horse & \(A\) & \(B\) & \(C\) & \(D\) \\
+                \hline
+                Probability & \(1/2\) & \(1/4\) & \(1/8\) & \(1/8\) \\
+                \hline
+            \end{tabular}
+        \end{center}\pause
+
+        \begin{itemize}
+            \item If we use the random variable \(X\) to denote the winner each race, find the Shannon Entropy \(H(X)\).\pause
+            \item Naturally, we would like to use 2 bits to encode the winner for each race, but Shannon's First Theorem suggests a better encoding. Can you come up with one?\pause
+            \item Why is \(H(X)\) a fraction number of bits, how does it make sense?
+        \end{itemize}
+    \end{problem}
+}
+
+\frame{
+    \frametitle{Black Holes}
+
+    Black hole seems to have not have an interior, so it probably has only one microstate, and has no entropy\pause
+
+    Consider a system of a hot cup of water and a black hole. Now the hot cup of water falls into the black hole.\pause
+
+    The entropy \textbf{disappeared}.
+}
+
+\frame{
+    \frametitle{Entropy of Black Holes}
+
+    Jacob Bekenstein in 1972 suggested that the entropy of a black hole \(S_{\text{BH}} \propto A\), the area of the event horizon.\pause
+
+    Stephen Hawking set out to prove him wrong -- but in 1974 not only did he found Bekenstein right, he also derived the constant of proportionality!\pause
+
+    \[
+        S_\text{BH} = \frac{k_\text{B}A}{4 l_\text{P}^2}.
+    \]\pause
+
+    But don't we use GR to describe giant stellar objects \dots, how is the Planck Length involved here?\pause
+
+    How is this related to \(S = k_\text{B} \ln \Omega\)?
+}
+
+\frame{
+    \frametitle{Questions we aim to answer in the future \dots} \pause
+
+    \begin{itemize}
+        \item Why is there a constant of \(k_\text{B}\) before the formula for entropy?\pause
+        \item Why is entropy also a measure of useable energy?\pause
+        \item How are the definitions of the two entropies equivalent?\pause
+        \item Why is the Maxwell-Boltzmann Distribution the one we see?
+    \end{itemize}
+}
+
+\frame{
+    \begin{quote}
+        Just as the constant increase of entropy is the basic law of the universe, so it is the basic law of life to be ever more highly structured and to struggle against entropy.
+
+        \hfill --- Vaclav Havel (1986), Czech playwright, Letter to Dr. Gustav Husak, Living in Truth
+    \end{quote}
+}
+
+\frame[allowframebreaks]{
+    \frametitle{References}
+    \nocite{*}
+    \printbibliography
+}
+\end{document}
