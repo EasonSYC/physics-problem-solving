@@ -1,0 +1,56 @@
+
+
+\frame{
+    \frametitle{Entropy as unusable energy}
+
+    I would first like to prepare us with some necessary background \dots\pause
+    \begin{theorem}[First Law of Thermodynamics]
+        \[
+            \Delta U = Q - W,
+        \]
+        where \(\Delta U\) is the increase in internal energy of the system, \(Q\) is heat supplied to the system, and \(W\) is work done by the system.
+    \end{theorem}\pause
+
+    \begin{theorem}[Ideal Gas Equation]
+        \[\frac{pV}{T} = \text{const.}\]
+    \end{theorem}
+}
+
+\frame{
+    \frametitle{Thermodynamic Processes}
+
+    \begin{definition}[Isothermic and Adiabatic Processes]
+        \begin{itemize}
+            \item A \textbf{isothermic} process is when the temperature of the system does not change (i.e. \(pV = \text{const.}\), \(\Delta U = 0\), \(Q = W\)).\pause
+            \item An \textbf{adiabatic} process is when there is no heat transfer to a system (i.e. \(Q = 0\), \(\Delta U = -W\)).\pause
+        \end{itemize}
+    \end{definition}
+
+    \begin{example}[Examples of Isothermic and Adiabatic Processes]
+        \begin{itemize}
+            \item If I compress a gas very slowly, then it could be seen as an isothermic process, since the temperature of gas remains the same.\pause
+            \item If I compress a gas extremely rapidly, then it could be seen as an adiabatic process, since there is no time to exchange heat with the exterior.
+        \end{itemize}
+    \end{example}
+}
+
+\frame{
+    \frametitle{The Carnot Cycle}
+
+    It is known that there is a heat cycle due to \textbf{Carnot} which he also managed to prove that is the most efficient heat cycle (Carnot's Theorem).\pause
+
+    There are four steps involved:\pause
+    \begin{enumerate}
+        \item A hot reservoir \(T_\text{H}\) provides thermal energy to a gas which has temperature just lower than \(T_\text{H}\). This is an \textbf{isothermal} expansion. Energy \(Q_\text{H}\) is transferred.\pause
+        \item The gas is then insulated from the reservoir and cooled down. Therfore, it continues to expand, until it reaches a temperature \(T_\text{C}\). This is an \textbf{adiabatic} expansion.\pause
+        \item The gas undergoes an \textbf{isothermal} compression by giving out thermal energy \(Q_\text{C}\) to a cold reservoir with temperature \(T_\text{C}\).\pause
+        \item The gas experiences \textbf{adiabatic} compression as it heats back to the temperature \(T_\text{H}\).\pause
+    \end{enumerate}
+
+    It is intuitive that all these steps are reversible.
+}
+
+\frame{
+    \frametitle{Why are they equivalent?}
+    The answer is: the Boltzmann Distribution (necessary and sufficient)!
+}
